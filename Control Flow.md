@@ -1,205 +1,242 @@
-# Collection Types in Swift: Array, Set, Dictionary
+# Control Flow: Loops, Branching, and Control Transfer Statements
 
-Swift provides three primary collection types: Arrays, Sets, and Dictionaries. These collection types are used to store values in an organized way, making it easier to manage and manipulate groups of related data.
+Control flow is fundamental to managing the logic of a program. Swift provides several types of control flow statements, including loop statements, branching statements, and control transfer statements. In this guide, we'll explore these control flow concepts with examples.
 
-## Arrays
+## Loop Statements
+Loop statements allow you to execute a block of code repeatedly.
 
-An **array** is an ordered collection of values. Arrays in Swift can store values of the same type and can be mutable (using `var`) or immutable (using `let`).
+### For-In Loop
 
-### Creating Arrays
+The `for-in` loop is used to iterate over collections, ranges, or sequences.
 
-You can create an empty array or initialize an array with default values.
-
-### Examples:
-
-```swift
-var emptyArray: [Int] = []          // Empty array of integers
-var arrayOfStrings = ["Apple", "Banana", "Cherry"]
-let repeatedArray = Array(repeating: 0, count: 5) // [0, 0, 0, 0, 0]
-```
-
-Swift infers the type of the array from the values provided, but you can also explicitly specify the type.
-
-### Accessing and Modifying Arrays
-
-You can access elements of an array using index values, starting from `0`. Arrays can also be modified by adding or removing elements.
-
-### Examples:
+#### Examples:
 
 ```swift
-var numbers = [1, 2, 3, 4, 5]
+let names = ["Alice", "Bob", "Charlie"]
 
-// Access elements
-print(numbers[0])   // 1
-
-// Modify elements
-numbers[1] = 20
-print(numbers)   // [1, 20, 3, 4, 5]
-
-// Append elements
-numbers.append(6)   // [1, 20, 3, 4, 5, 6]
-
-// Insert elements
-numbers.insert(10, at: 2)  // [1, 20, 10, 3, 4, 5, 6]
-
-// Remove elements
-numbers.remove(at: 4)  // [1, 20, 10, 3, 5, 6]
-```
-
-### Iterating Over an Array
-
-You can iterate over an array using a `for-in` loop.
-
-```swift
-for fruit in arrayOfStrings {
-    print(fruit)
+for name in names {
+    print("Hello, \(name)!")
 }
 // Output:
-// Apple
-// Banana
-// Cherry
-```
+// Hello, Alice!
+// Hello, Bob!
+// Hello, Charlie!
 
-### Array Properties and Methods
-
-- `count`: Returns the number of elements in the array.
-- `isEmpty`: Returns `true` if the array is empty.
-- `first` and `last`: Get the first or last element of the array.
-
-### Examples:
-
-```swift
-print(numbers.count)    // 6
-print(numbers.isEmpty)  // false
-print(numbers.first)    // Optional(1)
-print(numbers.last)     // Optional(6)
-```
-
-## Sets
-
-A **set** is an unordered collection of unique values. Sets are particularly useful when you need to ensure that there are no duplicate elements.
-
-### Creating Sets
-
-You create a set by using an array literal. The type must be explicitly declared because a set does not maintain the order of elements.
-
-### Examples:
-
-```swift
-var uniqueNumbers: Set<Int> = [1, 2, 3, 4, 5]
-let fruits: Set = ["Apple", "Banana", "Cherry"]
-```
-
-### Adding and Removing Elements
-
-Sets provide methods to add or remove elements.
-
-```swift
-uniqueNumbers.insert(6)  // {1, 2, 3, 4, 5, 6}
-uniqueNumbers.remove(3)  // {1, 2, 4, 5, 6}
-```
-
-### Set Operations
-
-Sets support various mathematical operations like union, intersection, and subtraction.
-
-- `union(_:)`: Returns a new set containing all elements from both sets.
-- `intersection(_:)`: Returns a new set with only the elements common to both sets.
-- `subtracting(_:)`: Returns a new set with elements that are not in the specified set.
-
-### Examples:
-
-```swift
-let setA: Set = [1, 2, 3, 4]
-let setB: Set = [3, 4, 5, 6]
-
-let unionSet = setA.union(setB)           // {1, 2, 3, 4, 5, 6}
-let intersectionSet = setA.intersection(setB)  // {3, 4}
-let subtractingSet = setA.subtracting(setB)    // {1, 2}
-```
-
-### Set Properties
-
-- `isEmpty`: Checks if the set is empty.
-- `count`: Returns the number of elements.
-
-```swift
-print(fruits.isEmpty)  // false
-print(fruits.count)    // 3
-```
-
-## Dictionaries
-
-A **dictionary** is an unordered collection of key-value pairs. Each key in a dictionary is unique, and it maps to a specific value.
-
-### Creating Dictionaries
-
-You can create a dictionary using a dictionary literal.
-
-### Examples:
-
-```swift
-var countryCodes: [String: String] = [
-    "US": "United States",
-    "CA": "Canada",
-    "FR": "France"
-]
-```
-
-### Accessing and Modifying Dictionaries
-
-You can access and modify dictionaries by using the key.
-
-```swift
-// Access value
-if let country = countryCodes["CA"] {
-    print(country)   // "Canada"
+for number in 1...5 {
+    print(number)
 }
-
-// Add or update value
-countryCodes["GB"] = "United Kingdom"
-print(countryCodes)  // ["US": "United States", "CA": "Canada", "FR": "France", "GB": "United Kingdom"]
-
-// Remove a key-value pair
-countryCodes["FR"] = nil
-print(countryCodes)  // ["US": "United States", "CA": "Canada", "GB": "United Kingdom"]
+// Output: 1, 2, 3, 4, 5
 ```
 
-### Iterating Over a Dictionary
+### While Loop
 
-You can iterate over a dictionary to get each key-value pair.
+The `while` loop repeats a block of code as long as a specified condition remains true. It is particularly useful when the number of iterations is not known beforehand.
+
+#### Example:
 
 ```swift
-for (code, country) in countryCodes {
-    print("\(code): \(country)")
+var counter = 3
+
+while counter > 0 {
+    print("Countdown: \(counter)")
+    counter -= 1
 }
 // Output:
-// US: United States
-// CA: Canada
-// GB: United Kingdom
+// Countdown: 3
+// Countdown: 2
+// Countdown: 1
 ```
 
-### Dictionary Properties and Methods
+### Repeat-While Loop
 
-- `count`: Returns the number of key-value pairs in the dictionary.
-- `isEmpty`: Returns `true` if the dictionary is empty.
-- `keys` and `values`: Properties to access all keys or values in the dictionary.
+The `repeat-while` loop is similar to the `while` loop, except the condition is checked after each iteration, ensuring that the loop body is executed at least once.
 
-### Examples:
+#### Example:
 
 ```swift
-print(countryCodes.count)    // 3
-print(countryCodes.isEmpty)  // false
-print(countryCodes.keys)     // ["US", "CA", "GB"]
-print(countryCodes.values)   // ["United States", "Canada", "United Kingdom"]
+var number = 0
+
+repeat {
+    print("Number is: \(number)")
+    number += 1
+} while number < 3
+// Output:
+// Number is: 0
+// Number is: 1
+// Number is: 2
 ```
+
+## Branching Statements
+Branching statements allow you to execute different blocks of code based on conditions.
+
+### If Statement
+
+The `if` statement is used to execute a block of code when a condition is true.
+
+#### Example:
+
+```swift
+let score = 85
+
+if score >= 90 {
+    print("Excellent!")
+} else if score >= 70 {
+    print("Good job!")
+} else {
+    print("Keep trying!")
+}
+// Output: Good job!
+```
+
+### Guard Statement
+
+The `guard` statement is used to exit a scope early when a certain condition is not met. It’s commonly used for input validation.
+
+#### Example:
+
+```swift
+func greet(person: String?) {
+    guard let name = person else {
+        print("No name provided.")
+        return
+    }
+    print("Hello, \(name)!")
+}
+
+greet(person: "Alice")   // Output: Hello, Alice!
+greet(person: nil)        // Output: No name provided.
+```
+
+### Switch Statement
+
+The `switch` statement is used to execute one of several possible blocks of code based on the value of an expression. It supports pattern matching and is more powerful than a simple `if-else` chain.
+
+#### Example:
+
+```swift
+let fruit = "apple"
+
+switch fruit {
+case "apple":
+    print("It’s an apple!")
+case "banana":
+    print("It’s a banana!")
+case "orange":
+    print("It’s an orange!")
+default:
+    print("Unknown fruit")
+}
+// Output: It’s an apple!
+```
+
+### Fallthrough in Switch
+
+By default, Swift does not fall through to the next case in a `switch` statement, unlike some other programming languages. However, you can use the `fallthrough` keyword if you want this behavior.
+
+#### Example:
+
+```swift
+let number = 3
+
+switch number {
+case 3:
+    print("Three")
+    fallthrough
+case 4:
+    print("Four")
+default:
+    print("Other number")
+}
+// Output:
+// Three
+// Four
+```
+
+## Control Transfer Statements
+Control transfer statements are used to change the flow of execution within loops or other control structures.
+
+### Break
+
+The `break` statement is used to terminate the current loop or switch statement.
+
+#### Example:
+
+```swift
+for i in 1...5 {
+    if i == 3 {
+        break
+    }
+    print(i)
+}
+// Output: 1, 2
+```
+
+### Continue
+
+The `continue` statement is used to skip the current iteration of the loop and move to the next iteration.
+
+#### Example:
+
+```swift
+for i in 1...5 {
+    if i == 3 {
+        continue
+    }
+    print(i)
+}
+// Output: 1, 2, 4, 5
+```
+
+### Return
+
+The `return` statement is used to exit a function and optionally return a value.
+
+#### Example:
+
+```swift
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+let result = add(3, 4)
+print(result)   // Output: 7
+```
+
+## Labels
+
+Swift also allows you to label loops and control flow statements, allowing you to `break` or `continue` a specific outer loop.
+
+#### Example:
+
+```swift
+outerLoop: for i in 1...3 {
+    for j in 1...3 {
+        if j == 2 {
+            continue outerLoop
+        }
+        print("i: \(i), j: \(j)")
+    }
+}
+// Output:
+// i: 1, j: 1
+// i: 2, j: 1
+// i: 3, j: 1
+```
+
+## Summary
+
+- **Loop Statements**: Use `for-in`, `while`, and `repeat-while` to iterate over elements or execute code repeatedly.
+- **Branching Statements**: Use `if`, `guard`, and `switch` to conditionally execute code.
+- **Control Transfer Statements**: Use `break`, `continue`, `return`, and `fallthrough` to manage flow within loops and conditionals.
+
+Swift’s control flow statements provide flexibility and power to effectively manage program logic, making code more expressive and readable.
 
 ## References
 
 For more details, you can refer to the official Swift documentation:
 
-- [Swift Language Guide - Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html)
+- [Swift Language Guide - Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html)
 - [Swift Standard Library Reference](https://developer.apple.com/documentation/swift)
 
-These references provide further insights and more advanced use cases for collection types in Swift.
+These references provide further insights and more advanced use cases for control flow in Swift.
 
