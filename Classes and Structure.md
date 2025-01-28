@@ -1,5 +1,4 @@
 # Classes, Structures, and the `self` Keyword
-(Rename the title)
 
 In Swift, **classes** and **structures** are foundational building blocks for your code. They allow you to create custom data types with properties and methods. Understanding the differences between them and how to use the `self` keyword is essential for effective Swift programming.
 
@@ -85,9 +84,6 @@ point2.description()  // Outputs: Point at (3.0, 2.0)
 
 Structures are **value types**, meaning they make a copy of themselves when assigned to a new variable or constant.
 
----
-
-Here’s an updated version including **initializers**:
 
 ---
 
