@@ -200,6 +200,4 @@ Maintain good performance:
 - [View Controller Lifecycle](https://developer.apple.com/documentation/uikit/uiviewcontroller#//apple_ref/doc/uid/TP40007457-CH11-SW2)
 
 ### Sample Code and Resources
-- [Implementing a Container View Controller](https://developer.apple.com/documentation/uikit/view_controllers/implementing_a_container_view_controller)
-- [Customizing the View Controller Hierarchy](https://developer.apple.com/documentation/uikit/view_controllers/customizing_the_view_controller_hierarchy)
 - [Managing Content in Your App's Windows](https://developer.apple.com/documentation/uikit/view_controllers/managing_content_in_your_app_s_windows)
